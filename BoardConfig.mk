@@ -280,3 +280,6 @@ WIFI_DRIVER_STATE_OFF := "OFF"
 WIFI_DRIVER_STATE_ON := "ON"
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
+
+# Permanent fix for duplicate protobuf_vendorcompat conflict
+$(shell rm -rf prebuilts/misc/protobuf_vendorcompat)
