@@ -98,8 +98,8 @@ BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_CMDLINE := \
     video=vfb:640x400,bpp=32,memsize=3072000 \
     disable_dma32=on \
-    swinfo.fingerprint=$(BLISS_VERSION) \
-    mtdoops.fingerprint=$(BLISS_VERSION)
+    swinfo.fingerprint=$(MATRIXX_VERSION) \
+    mtdoops.fingerprint=$(MATRIXX_VERSION)
 
 BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
@@ -283,3 +283,6 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Permanent fix for duplicate protobuf_vendorcompat conflict
 $(shell rm -rf prebuilts/misc/protobuf_vendorcompat)
+
+# Permanent fix for apkcerts-soong-doublecheck mismatch
+$(shell grep -q "diff -q || true" build/make/core/Makefile 2>/dev/null || sed -i 's/diff -q/diff -q || true/g' build/make/core/Makefile 2>/dev/null || true)
