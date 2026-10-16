@@ -288,4 +288,5 @@ $(shell rm -rf prebuilts/misc/protobuf_vendorcompat)
 $(shell grep -q "diff -q || true" build/make/core/Makefile 2>/dev/null || sed -i 's/diff -q/diff -q || true/g' build/make/core/Makefile 2>/dev/null || true)
 
 # Permanent fix for libwfdnative unresolved symbol in Android 16
-$(shell sed -i '/name: "libwfdnative",/a \    check_elf_files: false,' vendor/xiaomi/sky/Android.bp 2>/dev/null || true)
+$(shell grep -A 3 'name: "libwfdnative"' vendor/xiaomi/sky/Android.bp 2>/dev/null | grep -q "check_elf_files" || sed -i '/name: "libwfdnative",/a \    check_elf_files: false,' vendor/xiaomi/sky/Android.bp 2>/dev/null || true)
+
