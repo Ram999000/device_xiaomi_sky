@@ -286,5 +286,3 @@ $(shell rm -rf prebuilts/misc/protobuf_vendorcompat)
 
 # Permanent fix for apkcerts-soong-doublecheck mismatch
 $(shell grep -q "diff -q || true" build/make/core/Makefile 2>/dev/null || sed -i 's/diff -q/diff -q || true/g' build/make/core/Makefile 2>/dev/null || true)
-
-
