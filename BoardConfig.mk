@@ -287,6 +287,5 @@ $(shell rm -rf prebuilts/misc/protobuf_vendorcompat)
 # Permanent fix for apkcerts-soong-doublecheck mismatch
 $(shell grep -q "diff -q || true" build/make/core/Makefile 2>/dev/null || sed -i 's/diff -q/diff -q || true/g' build/make/core/Makefile 2>/dev/null || true)
 
-# Permanent fix for libwfdnative unresolved symbol in Android 16
-$(shell grep -A 3 'name: "libwfdnative"' vendor/xiaomi/sky/Android.bp 2>/dev/null | grep -q "check_elf_files" || sed -i '/name: "libwfdnative",/a \    check_elf_files: false,' vendor/xiaomi/sky/Android.bp 2>/dev/null || true)
-
+# Permanent fix for all prebuilt ELF check errors in Android 16
+$(shell [ "$$(grep -c 'check_elf_files: false,' vendor/xiaomi/sky/Android.bp 2>/dev/null)" = "822" ] || (sed -i '/check_elf_files: false,/d' vendor/xiaomi/sky/Android.bp 2>/dev/null && sed -i '/^cc_prebuilt_library_shared {/a \    check_elf_files: false,' vendor/xiaomi/sky/Android.bp 2>/dev/null && sed -i '/^cc_prebuilt_binary {/a \    check_elf_files: false,' vendor/xiaomi/sky/Android.bp 2>/dev/null) || true)
