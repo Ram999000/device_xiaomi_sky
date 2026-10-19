@@ -574,8 +574,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # ---- 3. iPHONE JAISA BLUR + DYNAMIC ISLAND STYLE ----
 PRODUCT_PACKAGES += \
-    BlurOverlay \
-    DynamicIslandOverlay
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.supports_background_blur=1 \
@@ -587,8 +585,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # A) Gaming Mode 100% - FPS Meter + Touch Boost
 PRODUCT_PACKAGES += \
-    GamingMode \
-    FPSInfoService
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.perf.scroll_opt=true \
@@ -602,12 +598,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.pixelprops.gphotos=true
 
 PRODUCT_PACKAGES += \
-    PixelPropsUtils
 
 # C) Dolby Atmos + Viper + Hi-Res Audio - iPhone se bhi best sound
 PRODUCT_PACKAGES += \
-    DolbyAtmos \
-    AudioFX
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.audio.hifi=true \
@@ -616,7 +609,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # D) KSU Next - Root Hide + Banking Apps 100% Working
 PRODUCT_PACKAGES += \
-    KernelSU_Next
 
 # E) 120Hz Forced Smooth + Adaptive Refresh - iPhone ProMotion jaisa
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -637,13 +629,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # G) AI Features + Magic Eraser + Live Translate
 PRODUCT_PACKAGES += \
-    PixelLauncherCustom \
-    PhotosOverlay
 
 # H) iPhone Jaisa Control Center + Lockscreen
 PRODUCT_PACKAGES += \
-    SystemUIOverlay \
-    LockscreenOverlay
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sysui.lockscreen.iPhone_style=true \
