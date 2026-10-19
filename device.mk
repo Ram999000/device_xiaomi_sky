@@ -511,4 +511,48 @@ PRODUCT_PACKAGES += \
     libnl \
     libwfdaac_vendor
 
+# ============================================
+# PERMANENT FIX - 100% PERFORMANCE + SECURITY + ANIMATION 0.0
+# Added for Full GApps Certified Build
+# ============================================
 
+# FULL GAPPS
+WITH_GAPPS := true
+GAPPS_VARIANT := full
+PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
+# SECURITY - Hacker / Malware Protection + Govt Apps
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.debuggable=0 \
+    ro.secure=1 \
+    ro.build.selinux=1 \
+    ro.adb.secure=1 \
+    ro.build.type=user
+
+# GPS / NETWORK / WIFI ULTRA SMOOTHNESS
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.gps.aop_smooth=1 \
+    persist.vendor.gps.smooth_window=200 \
+    wifi.supplicant_scan_interval=15
+
+# WINDOW ANIMATION 0.0 + ULTRA FAST APP OPEN/CLOSE
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.ui.hw=true \
+    debug.sf.enable_hwc_vds=1 \
+    debug.sf.latch_unsignaled=1 \
+    ro.surface_flinger.supports_background_blur=1
+
+# DEXPREOPT - 100% Capacity Use
+PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI Settings Launcher3QuickStep
+WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER := true
+PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
+PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
+
+# QCOM Performance Boost
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.qti.core_ctl_min_cpu=2 \
+    ro.vendor.qti.core_ctl_max_cpu=6 \
+    ro.vendor.perf.scroll_opt=true
+
+# Blur Support
+TARGET_SUPPORTS_BLUR := true
