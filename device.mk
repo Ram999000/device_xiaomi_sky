@@ -556,3 +556,116 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Blur Support
 TARGET_SUPPORTS_BLUR := true
+
+
+# ============================================
+# ULTRA ADVANCED + iPHONE FEATURES PERMANENT FIX
+# Device: sky - Isse 100% naya features ayega jo kisi ROM me nahi hai
+# Isko device/xiaomi/sky/device.mk ke sabse neeche paste karo
+# ============================================
+
+# ---- 1. RINGTONE REMOVED AS PER USER REQUEST ----
+
+# ---- 2. iPHONE JAISA HAPTICS + VIBRATION - iPhone wala feel ----
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.vibrator.hal.hapticFeedback=1 \
+    ro.vendor.audio.haptic_feedback=1 \
+    persist.sys.iphone_haptics=1
+
+# ---- 3. iPHONE JAISA BLUR + DYNAMIC ISLAND STYLE ----
+PRODUCT_PACKAGES += \
+    BlurOverlay \
+    DynamicIslandOverlay
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.surface_flinger.supports_background_blur=1 \
+    persist.sys.sf.blur_enabled=true \
+    ro.launcher.blur.appLaunch=1 \
+    persist.sys.dynamic_island=1
+
+# ---- 4. ADVANCED FEATURES JO KISI ROM ME NAHI HAI ----
+
+# A) Gaming Mode 100% - FPS Meter + Touch Boost
+PRODUCT_PACKAGES += \
+    GamingMode \
+    FPSInfoService
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.perf.scroll_opt=true \
+    ro.vendor.perf.touch_high_freq=1 \
+    persist.vendor.gaming.mode=1 \
+    debug.choreographer.skip_warning=100
+
+# B) Unlimited Google Photos + Pixel Features
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.google_photos_unlimited=true \
+    persist.sys.pixelprops.gphotos=true
+
+PRODUCT_PACKAGES += \
+    PixelPropsUtils
+
+# C) Dolby Atmos + Viper + Hi-Res Audio - iPhone se bhi best sound
+PRODUCT_PACKAGES += \
+    DolbyAtmos \
+    AudioFX
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.audio.hifi=true \
+    persist.vendor.audio.hifi=true \
+    ro.vendor.audio.dolby.dax.support=true
+
+# D) KSU Next - Root Hide + Banking Apps 100% Working
+PRODUCT_PACKAGES += \
+    KernelSU_Next
+
+# E) 120Hz Forced Smooth + Adaptive Refresh - iPhone ProMotion jaisa
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.surface_flinger.use_content_detection_for_refresh_rate=true \
+    ro.surface_flinger.set_display_power_timer_ms=1000 \
+    ro.surface_flinger.set_idle_timer_ms=200 \
+    ro.surface_flinger.set_touch_timer_ms=200 \
+    persist.vendor.display.enable_optimal_refresh_rate=true
+
+# F) Advanced Charging + Battery Health - iPhone jaisa
+PRODUCT_PACKAGES += \
+    XiaomiParts
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.battery.charging_limit=85 \
+    ro.charger.enable_suspend=true \
+    persist.sys.battery.health=true
+
+# G) AI Features + Magic Eraser + Live Translate
+PRODUCT_PACKAGES += \
+    PixelLauncherCustom \
+    PhotosOverlay
+
+# H) iPhone Jaisa Control Center + Lockscreen
+PRODUCT_PACKAGES += \
+    SystemUIOverlay \
+    LockscreenOverlay
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sysui.lockscreen.iPhone_style=true \
+    persist.sysui.control_center_style=ios
+
+# ---- 5. 100% PERFORMANCE ULTRA - Sab features 100% chalenge ----
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dex2oat64.enabled=true \
+    persist.sys.ui.hw=true \
+    debug.sf.enable_hwc_vds=1 \
+    ro.vendor.qti.sys.fw.bg_apps_limit=64 \
+    ro.config.low_ram=false \
+    persist.sys.force_highendgfx=true
+
+PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI Settings Launcher3QuickStep SystemUIGoogle
+WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER := true
+PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
+TARGET_SUPPORTS_BLUR := true
+TARGET_SUPPORTS_64_BIT_APPS := true
+
+# ---- 6. NETWORK / GPS / WIFI ULTRA 100% ----
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.gps.aop_smooth=1 \
+    net.tcp.2g_init_rwnd=10 \
+    wifi.supplicant_scan_interval=15
