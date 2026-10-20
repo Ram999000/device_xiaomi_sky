@@ -210,7 +210,7 @@ ENABLE_VENDOR_RIL_SERVICE := true
 TARGET_SCREEN_DENSITY := 440
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2026-01-05
+VENDOR_SECURITY_PATCH := 2025-10-01
 
 # Sepolicy
 include device/qcom/sepolicy_vndr/SEPolicy.mk
@@ -286,8 +286,3 @@ $(shell rm -rf prebuilts/misc/protobuf_vendorcompat)
 
 # Permanent fix for apkcerts-soong-doublecheck mismatch
 $(shell grep -q "diff -q || true" build/make/core/Makefile 2>/dev/null || sed -i 's/diff -q/diff -q || true/g' build/make/core/Makefile 2>/dev/null || true)
-
-# ---- PERMANENT FIX FOR FULL GAPPS BUILD ----
-# Security + Certified + Performance
-TARGET_BUILD_VARIANT := user
-BUILD_BROKEN_INCORRECT_PARTITION_IMAGES := true
