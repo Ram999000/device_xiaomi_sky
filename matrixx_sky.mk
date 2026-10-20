@@ -12,6 +12,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 # Configure full_base_telephony.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
+# Project Matrixx GApps (GMS) Configuration
+# Must be defined BEFORE inheriting vendor/matrixx/config/common_full_phone.mk
+WITH_GMS := true
+TARGET_INCLUDE_PIXEL_LAUNCHER := true
+TARGET_DEFAULT_PIXEL_LAUNCHER := true
+WITH_GMS_COMMS_SUITE := true
+TARGET_INCLUDE_MATLOG := true
+
 # Inherit common Matrixx configurations
 $(call inherit-product, vendor/matrixx/config/common_full_phone.mk)
 
